@@ -1,0 +1,38 @@
+﻿@using MvcStock.Models.Entity
+@model List<Tbl_Categories>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="Tbl" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tmp in Model)
+        {
+            <tr>
+                <th>@tmp.CategoryID</th>
+                <td>@tmp.CategoryName</td>
+                <td><a href="/Category/Delete/@tmp.CategoryID" class="btn btn-danger">Delete</a></td>
+                <td><a href="/Category/GetCategory/@tmp.CategoryID" class="btn btn-success">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<td><a href="/Category/NewCategory" class="btn btn-primary">Add New Category</a></td>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $('#Tbl').DataTable();
+</script>
+
+

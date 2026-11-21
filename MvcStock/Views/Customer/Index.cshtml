@@ -1,0 +1,42 @@
+﻿
+@using MvcStock.Models.Entity
+@model List<Tbl_Customers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="Tbl" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tmp in Model)
+        {
+            <tr>
+                <th>@tmp.CustomerID</th>
+                <td>@tmp.CustomerName</td>
+                <td>@tmp.CustomerSurname</td>
+                <td><a href="/Customer/Delete/@tmp.CustomerID" class="btn btn-danger">Delete</a></td>
+                <td><a href="/Customer/GetCustomer/@tmp.CustomerID" class="btn btn-success">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<td><a href="/Customer/NewCustomer" class="btn btn-primary">Add New Customer</a></td>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $('#Tbl').DataTable();
+</script>
+
+

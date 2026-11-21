@@ -1,0 +1,36 @@
+﻿@model MvcStock.Models.Entity.Tbl_Products
+@{
+    ViewBag.Title = "NewProduct";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>Model</label>
+        <input class="form-control" name="Model" required="" />
+    </div>
+    <div>
+        <label>Product Name</label>
+        <input class="form-control" name="ProductName" required="" maxlength="15" placeholder="Enter a product name like 'Hair Dreyer'. Max Length: 15" />
+    </div>
+    <div>
+        <label>Brand Name</label>
+        <input class="form-control" name="BrandName" required="" />
+    </div>
+    <div>
+        <label>Product Category</label>
+        @Html.DropDownListFor(m => m.Tbl_Categories.CategoryID, (List<SelectListItem>)ViewBag.val, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Price</label>
+        <input class="form-control" name="Price" />
+    </div>
+    <div>
+        <label>Stock</label>
+        <input class="form-control" name="Stock" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Add New Product</button>
+    </div>
+</form>
+
